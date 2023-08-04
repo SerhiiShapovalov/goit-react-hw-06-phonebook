@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { updateFilter } from '../../redux/reducers';
 import css from './Filter.module.css';
 
-function Filter({ filter, changeFilter }) {
+function Filter({ filter }) {
+  const dispatch = useDispatch();
   return (
     <label className={css.label}>
       <p className={css.text}>Find contacts by name</p>
@@ -9,7 +12,7 @@ function Filter({ filter, changeFilter }) {
         className={css.input}
         type="text"
         value={filter}
-        onChange={changeFilter}
+        onChange={e => dispatch(updateFilter(e.target.value))}
       />
     </label>
   );

@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/reducers';
 import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
-function ContactList({ contacts, onDeleteContact }) {
+function ContactList({ contacts }) {
+  const dispatch = useDispatch();
   return (
     <ul>
       {contacts.map(({ id, name, number }) => {
@@ -11,7 +14,7 @@ function ContactList({ contacts, onDeleteContact }) {
             <Contact
               name={name}
               number={number}
-              onDeleteContact={() => onDeleteContact(id)}
+              onDeleteContact={() => dispatch(deleteContact(id))}
               contactId={id}
             />
           </li>
