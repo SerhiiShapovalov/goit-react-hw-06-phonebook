@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/reducers';
+import { addContact } from '../../redux/contactsSlice';
 import css from './ContactForm.module.css';
 
 function ContactForm() {

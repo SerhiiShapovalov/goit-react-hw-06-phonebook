@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { updateFilter } from '../../redux/reducers';
+import { updateFilter } from '../../redux/contactsSlice';
 import css from './Filter.module.css';
 
 function Filter({ filter }) {
