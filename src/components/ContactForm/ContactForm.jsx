@@ -1,21 +1,34 @@
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { addContact, getContacts } from '../../redux/contactsSlice';
 import css from './ContactForm.module.css';
 
-function ContactForm() {
-  const dispatch = useDispatch();
+function ContactForm({ onClose }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const onChangeName = e => setName(e.currentTarget.value);
   const onChangeNunber = e => setNumber(e.currentTarget.value);
 
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+
   const onSubmitForm = e => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+
+    const newElement = { id: nanoid(), name, number };
+
+    if (contacts.some(contact => contact.name === name)) {
+      window.alert(`${name} is already in the contact list.`);
+      return;
+    } else {
+      dispatch(addContact(newElement));
+    }
+
     reset();
+    onClose();
   };
 
   const reset = () => {
