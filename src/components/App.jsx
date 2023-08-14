@@ -16,7 +16,7 @@ function App() {
 
         <h2 className={css.subtitle}>Contacts</h2>
         <Filter />
-        {contacts.length > 0 ? <ContactList /> : []}
+        {contacts.length > 0 && <ContactList />}
       </div>
     </div>
   );

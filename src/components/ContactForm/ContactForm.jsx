@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addContact, getContacts } from '../../redux/contactsSlice';
 import css from './ContactForm.module.css';
 
-function ContactForm({ onClose }) {
+function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -28,7 +28,7 @@ function ContactForm({ onClose }) {
     }
 
     reset();
-    onClose();
+    // onClose();
   };
 
   const reset = () => {
